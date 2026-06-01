@@ -94,7 +94,8 @@ body{
     background:linear-gradient(135deg,#0f172a,#1e293b);
     color:white;
     scroll-behavior:smooth;
-    overflow-x:hidden;
+
+    overflow-x:hidden; /* FIX SCROLL */
 }
 
 /* 🌌 PARTICULES */
@@ -105,6 +106,8 @@ body{
     width:100%;
     height:100%;
     z-index:0;
+
+    pointer-events:none; /* FIX CLICS */
 }
 
 /* contenu au-dessus */
@@ -147,7 +150,7 @@ body > *{
     padding:20px;
 }
 
-/* 🔥 LOGO ANIMÉ */
+/* LOGO */
 .logo{
     font-size:3rem;
     font-weight:bold;
@@ -269,7 +272,11 @@ footer{
 
 <img src="5CF7D331-C878-42FE-923E-328B185E7B5D.png" class="hero-image">
 
-<a class="btn" href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank" rel="noopener">
+<!-- FIX BOUTON -->
+<a class="btn"
+href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X"
+target="_blank"
+rel="noopener noreferrer">
 📲 Rejoindre WhatsApp
 </a>
 
