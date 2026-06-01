@@ -6,92 +6,10 @@
 <title>TΞΔM GΛMΞRΔ | Brawl Stars</title>
 
 <style>
-.faq-section{
-    padding:70px 20px;
-    text-align:center;
-    background:radial-gradient(circle at top,#1e293b,#0f172a);
-}
-
-.faq-section h1{
-    font-size:2.2rem;
-    margin-bottom:30px;
-    color:#fff;
-    text-shadow:0 0 10px #25D366, 0 0 20px #25D366;
-    animation:glowTitle 2s infinite alternate;
-}
-
-@keyframes glowTitle{
-    from{
-        text-shadow:0 0 5px #25D366;
-    }
-    to{
-        text-shadow:0 0 20px #25D366, 0 0 40px #25D366;
-    }
-}
-
-.faq-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:30px;
-}
-
-.faq-card{
-    background:linear-gradient(145deg,#1e293b,#0f172a);
-    border:2px solid rgba(37,211,102,0.5);
-    border-radius:18px;
-    padding:20px;
-    transition:0.3s ease;
-    box-shadow:0 0 15px rgba(37,211,102,0.15);
-    position:relative;
-    overflow:hidden;
-}
-
-/* glow animation au hover */
-.faq-card:hover{
-    transform:translateY(-8px) scale(1.03);
-    box-shadow:0 0 25px rgba(37,211,102,0.6),
-                0 0 50px rgba(37,211,102,0.3);
-}
-
-/* effet lumière qui passe */
-.faq-card::before{
-    content:"";
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:linear-gradient(
-        45deg,
-        transparent,
-        rgba(37,211,102,0.1),
-        transparent
-    );
-    transform:rotate(0deg);
-    animation:shine 4s linear infinite;
-}
-
-@keyframes shine{
-    0%{transform:rotate(0deg);}
-    100%{transform:rotate(360deg);}
-}
-
-.faq-card h2{
-    color:#25D366;
-    margin-bottom:10px;
-    position:relative;
-}
-
-.faq-card p{
-    color:white;
-    opacity:0.9;
-    position:relative;
-}
 *{
     margin:0;
     padding:0;
-    box-sizing:border-box
+    box-sizing:border-box;
 }
 
 body{
@@ -99,8 +17,26 @@ body{
     background:linear-gradient(135deg,#0f172a,#1e293b);
     color:white;
     scroll-behavior:smooth;
+    overflow-x:hidden;
 }
 
+/* PARTICULES CANVAS */
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+
+/* tout le site passe au-dessus */
+body > *{
+    position:relative;
+    z-index:1;
+}
+
+/* NAVBAR */
 .navbar{
     position:sticky;
     top:0;
@@ -123,6 +59,7 @@ body{
     color:#25D366;
 }
 
+/* HERO + DÉGRADÉ ROUGE */
 .hero{
     min-height:100vh;
     display:flex;
@@ -131,12 +68,51 @@ body{
     align-items:center;
     text-align:center;
     padding:20px;
+
+    position:relative;
+    overflow:hidden;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 0, 0, 0.55),
+        rgba(15, 23, 42, 0.95)
+    );
 }
 
+/* effet lumière */
+.hero::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at top, rgba(255,0,0,0.35), transparent 60%);
+    pointer-events:none;
+}
+
+/* 🔥 LOGO ANIMÉ */
 .logo{
     font-size:3rem;
     font-weight:bold;
     margin-bottom:20px;
+    animation:logoAnim 2.5s infinite ease-in-out;
+    text-shadow:0 0 10px #ff0000, 0 0 20px #ff4d4d;
+}
+
+@keyframes logoAnim{
+    0%{
+        transform:scale(1) translateY(0);
+        text-shadow:0 0 10px #ff0000;
+    }
+    50%{
+        transform:scale(1.08) translateY(-5px);
+        text-shadow:0 0 25px #ff0000, 0 0 40px #ff4d4d;
+    }
+    100%{
+        transform:scale(1) translateY(0);
+        text-shadow:0 0 10px #ff0000;
+    }
 }
 
 .subtitle{
@@ -169,6 +145,11 @@ body{
     padding:15px 35px;
     border-radius:12px;
     font-size:1.2rem;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
 }
 
 .stats{
@@ -186,6 +167,7 @@ body{
     border-radius:15px;
 }
 
+/* FEATURES */
 .features{
     padding:60px 20px;
     text-align:center;
@@ -199,10 +181,30 @@ body{
 }
 
 /* FAQ */
-#faq{
-    padding:60px 20px;
+.faq-section{
+    padding:70px 20px;
     text-align:center;
-    background:#0f172a;
+    background:radial-gradient(circle at top,#1e293b,#0f172a);
+}
+
+.faq-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.faq-card{
+    background:linear-gradient(145deg,#1e293b,#0f172a);
+    border:2px solid rgba(37,211,102,0.5);
+    border-radius:18px;
+    padding:20px;
+    transition:0.3s ease;
+}
+
+.faq-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 0 25px rgba(37,211,102,0.6);
 }
 
 footer{
@@ -215,16 +217,15 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
+<canvas id="particles"></canvas>
+
 <nav class="navbar">
     <a href="#">Accueil</a>
     <a href="#features">Infos</a>
     <a href="#questions">Questions</a>
     <a href="#faq">FAQ</a>
-    <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">WhatsApp</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 
 <div class="logo">𓆩 TΞΔM GΛMΞRΔ 𓆪</div>
@@ -235,9 +236,7 @@ footer{
 
 <img src="5CF7D331-C878-42FE-923E-328B185E7B5D.png" class="hero-image">
 
-<a class="btn" href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">
-📲 Rejoindre WhatsApp
-</a>
+<a class="btn" href="#" target="_blank">📲 Rejoindre</a>
 
 <div class="stats">
     <div class="card"><h2>128+</h2><p>Abonnés</p></div>
@@ -247,87 +246,73 @@ footer{
 
 </section>
 
-<!-- INFOS -->
 <section class="features" id="features">
-
 <h1>Pourquoi rejoindre ?</h1>
 
 <div class="feature-grid">
-
-<div class="feature">
-<h2>🎮 Actualités</h2>
-<p>Toutes les nouveautés Brawl Stars.</p>
+<div class="feature"><h2>🎮 Actualités</h2><p>Nouveautés Brawl Stars.</p></div>
+<div class="feature"><h2>🎉 Jeux</h2><p>Défis et events.</p></div>
+<div class="feature"><h2>🏅 Concours</h2><p>Récompenses.</p></div>
+<div class="feature"><h2>👥 Communauté</h2><p>Fans de Team Gamera.</p></div>
 </div>
-
-<div class="feature">
-<h2>🎉 Jeux & Défis</h2>
-<p>Participe à des jeux et événements.</p>
-</div>
-
-<div class="feature">
-<h2>🏅 Concours</h2>
-<p>Récompenses communautaires.</p>
-</div>
-
-<div class="feature">
-<h2>👥 Communauté</h2>
-<p>Rejoins les fans de TΞΔM GΛMΞRΔ.</p>
-</div>
-
-</div>
-
 </section>
 
-<!-- QUESTIONS -->
-<section id="questions" class="features">
-
-<h1>❓ Questions des abonnés</h1>
-
-<div class="feature">
-<h2>📨 Poser une question</h2>
-<p>Envoie ta question via Google Forms.</p>
-
-<br>
-
-<a class="btn"
-href="https://docs.google.com/forms/d/e/1FAIpQLSft519tntUo2vEuFlQCYiUvURfjpR0nsy3B-blJVoEYHhJJKA/viewform?usp=sharing"
-target="_blank">
-❓ Ouvrir le formulaire
-</a>
-
-</div>
-
-</section>
-
-<!-- FAQ (OPTION 3) -->
 <section id="faq" class="faq-section">
-
-<h1>💬 Réponses de la communauté</h1>
+<h1>💬 FAQ</h1>
 
 <div class="faq-container">
-
-<div class="faq-card">
-<h2>❓ Comment rejoindre ?</h2>
-<p>Clique sur le bouton WhatsApp en haut du site.</p>
+<div class="faq-card"><h2>Rejoindre ?</h2><p>Bouton WhatsApp en haut.</p></div>
+<div class="faq-card"><h2>Questions ?</h2><p>Formulaire dédié.</p></div>
+<div class="faq-card"><h2>Site ?</h2><p>Communauté Brawl Stars.</p></div>
 </div>
-
-<div class="faq-card">
-<h2>❓ Comment poser une question ?</h2>
-<p>Utilise le formulaire dans la section Questions.</p>
-</div>
-
-<div class="faq-card">
-<h2>❓ À quoi sert ce site ?</h2>
-<p>À rejoindre la communauté et participer aux événements Brawl Stars.</p>
-</div>
-
-</div>
-
 </section>
 
 <footer>
-© 2026 TΞΔM GΛMΞRΔ • Fan Site Brawl Stars
+© 2026 TΞΔM GΛMΞRΔ
 </footer>
+
+<script>
+/* 🌌 PARTICULES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2+1,
+        dx:(Math.random()-0.5)*0.5,
+        dy:(Math.random()-0.5)*0.5
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle="rgba(255,0,0,0.6)";
+
+    particles.forEach(p=>{
+        p.x+=p.dx;
+        p.y+=p.dy;
+
+        if(p.x<0||p.x>canvas.width) p.dx*=-1;
+        if(p.y<0||p.y>canvas.height) p.dy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
 
 </body>
 </html>
