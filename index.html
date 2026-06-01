@@ -398,6 +398,12 @@ function animate(){
 
 animate();
 </script>
-
+<script>
+fetch("stats.json")
+  .then(res => res.json())
+  .then(data => {
+      document.getElementById("subs").innerText = data.abonnés + "+";
+  });
+</script>
 </body>
 </html>
