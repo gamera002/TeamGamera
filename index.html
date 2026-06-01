@@ -19,7 +19,6 @@ body{
     scroll-behavior:smooth;
 }
 
-/* NAVBAR */
 .navbar{
     position:sticky;
     top:0;
@@ -36,14 +35,12 @@ body{
     color:white;
     text-decoration:none;
     font-weight:bold;
-    transition:0.3s;
 }
 
 .navbar a:hover{
     color:#25D366;
 }
 
-/* HERO */
 .hero{
     min-height:100vh;
     display:flex;
@@ -92,7 +89,6 @@ body{
     font-size:1.2rem;
 }
 
-/* STATS */
 .stats{
     display:flex;
     justify-content:center;
@@ -108,7 +104,6 @@ body{
     border-radius:15px;
 }
 
-/* FEATURES */
 .features{
     padding:60px 20px;
     text-align:center;
@@ -121,8 +116,8 @@ body{
     margin-top:30px;
 }
 
-/* QUESTIONS */
-.questions{
+/* FAQ */
+#faq{
     padding:60px 20px;
     text-align:center;
     background:#0f172a;
@@ -138,11 +133,12 @@ footer{
 
 <body>
 
-<!-- NAVBAR (ONGLETS) -->
+<!-- NAVBAR -->
 <nav class="navbar">
     <a href="#">Accueil</a>
     <a href="#features">Infos</a>
     <a href="#questions">Questions</a>
+    <a href="#faq">FAQ</a>
     <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">WhatsApp</a>
 </nav>
 
@@ -152,33 +148,19 @@ footer{
 <div class="logo">𓆩 TΞΔM GΛMΞRΔ 𓆪</div>
 
 <p class="subtitle">
-🔥 Rejoins notre communauté Brawl Stars et participe aux jeux, défis et événements avec les abonnés !
+🔥 Rejoins notre communauté Brawl Stars et participe aux jeux, défis et événements !
 </p>
 
-<img
-    src="5CF7D331-C878-42FE-923E-328B185E7B5D.png"
-    class="hero-image"
-    alt="TEAM GAMERA">
+<img src="5CF7D331-C878-42FE-923E-328B185E7B5D.png" class="hero-image">
 
-<a class="btn"
-   href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X"
-   target="_blank">
-   📲 Rejoindre WhatsApp
+<a class="btn" href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">
+📲 Rejoindre WhatsApp
 </a>
 
 <div class="stats">
-    <div class="card">
-        <h2>128+</h2>
-        <p>Abonnés</p>
-    </div>
-    <div class="card">
-        <h2>🎮</h2>
-        <p>Brawl Stars</p>
-    </div>
-    <div class="card">
-        <h2>7j/7</h2>
-        <p>Actif</p>
-    </div>
+    <div class="card"><h2>128+</h2><p>Abonnés</p></div>
+    <div class="card"><h2>🎮</h2><p>Brawl Stars</p></div>
+    <div class="card"><h2>7j/7</h2><p>Actif</p></div>
 </div>
 
 </section>
@@ -197,12 +179,12 @@ footer{
 
 <div class="feature">
 <h2>🎉 Jeux & Défis</h2>
-<p>Participe à des jeux et événements avec les abonnés.</p>
+<p>Participe à des jeux et événements.</p>
 </div>
 
 <div class="feature">
 <h2>🏅 Concours</h2>
-<p>Défis communautaires et récompenses.</p>
+<p>Récompenses communautaires.</p>
 </div>
 
 <div class="feature">
@@ -214,28 +196,48 @@ footer{
 
 </section>
 
-<!-- QUESTIONS (ONGLET) -->
-<section class="questions" id="questions">
+<!-- QUESTIONS -->
+<section id="questions" class="features">
 
 <h1>❓ Questions des abonnés</h1>
 
-<p style="margin:20px auto;max-width:700px;">
-Pose ta question sur Brawl Stars ou la communauté TΞΔM GΛMΞRΔ 👇
-</p>
-
-<div class="feature" style="max-width:500px;margin:auto;">
-
-<h2>📨 Envoyer une question</h2>
-
-<p>Les questions sont lues par l'équipe.</p>
+<div class="feature">
+<h2>📨 Poser une question</h2>
+<p>Envoie ta question via Google Forms.</p>
 
 <br>
 
 <a class="btn"
-   href="https://docs.google.com/forms/d/e/1FAIpQLSft519tntUo2vEuFlQCYiUvURfjpR0nsy3B-blJVoEYHhJJKA/viewform?usp=publish-editor"
-   target="_blank">
-   ❓ Ouvrir le formulaire
+href="https://docs.google.com/forms/d/e/1FAIpQLSft519tntUo2vEuFlQCYiUvURfjpR0nsy3B-blJVoEYHhJJKA/viewform?usp=sharing"
+target="_blank">
+❓ Ouvrir le formulaire
 </a>
+
+</div>
+
+</section>
+
+<!-- FAQ (OPTION 3) -->
+<section id="faq">
+
+<h1>💬 Réponses de la communauté</h1>
+
+<div class="feature-grid">
+
+<div class="feature">
+<h2>Comment rejoindre ?</h2>
+<p>Clique sur le bouton WhatsApp en haut du site.</p>
+</div>
+
+<div class="feature">
+<h2>Comment poser une question ?</h2>
+<p>Utilise le formulaire dans la section Questions.</p>
+</div>
+
+<div class="feature">
+<h2>À quoi sert ce site ?</h2>
+<p>Communauté Brawl Stars et événements.</p>
+</div>
 
 </div>
 
