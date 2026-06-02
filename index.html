@@ -466,14 +466,13 @@ animate();
 </script>
 <script>
 <script>
+<script>
 fetch("stats.json")
   .then(res => res.json())
   .then(data => {
 
-      let cible = data.abonnés;
+      let cible = data.abonnes || 128;
       let actuel = 0;
-
-      const speed = Math.max(10, Math.floor(cible / 50));
 
       const interval = setInterval(() => {
 
@@ -488,7 +487,11 @@ fetch("stats.json")
 
       }, 30);
 
+  })
+  .catch(() => {
+      document.getElementById("subs").innerText = "128+";
   });
+</script>
 </script>
   
 </script>
