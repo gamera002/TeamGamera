@@ -253,6 +253,50 @@ footer{
     padding:30px;
     background:#0f172a;
 }
+/* 🔴 GLITCH COMPTEUR */
+.glitch-number {
+    position: relative;
+    color: #ff0000;
+    text-shadow: 0 0 5px red, 0 0 10px darkred;
+    animation: glitchFlicker 1.5s infinite;
+}
+
+.glitch-number::before,
+.glitch-number::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.glitch-number::before {
+    color: #ff3b3b;
+    transform: translateX(-2px);
+    animation: glitch1 0.3s infinite linear alternate-reverse;
+}
+
+.glitch-number::after {
+    color: #ff0000;
+    transform: translateX(2px);
+    animation: glitch2 0.3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch1 {
+    0% { transform: translate(-2px, 0); }
+    100% { transform: translate(2px, 0); }
+}
+
+@keyframes glitch2 {
+    0% { transform: translate(2px, 0); }
+    100% { transform: translate(-2px, 0); }
+}
+
+@keyframes glitchFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
 </style>
 </head>
 
