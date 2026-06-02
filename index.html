@@ -464,9 +464,6 @@ function animate(){
 
 animate();
 </script>
-<script>
-<script>
-<script>
 fetch("stats.json")
   .then(res => res.json())
   .then(data => {
@@ -492,32 +489,6 @@ fetch("stats.json")
       document.getElementById("subs").innerText = "128+";
   });
 </script>
-<script>
-fetch("stats.json")
-  .then(res => res.json())
-  .then(data => {
 
-      let cible = data.abonnés || 128;
-      let actuel = 0;
-
-      const interval = setInterval(() => {
-
-          actuel += Math.ceil(cible / 80);
-
-          if (actuel >= cible) {
-              actuel = cible;
-              clearInterval(interval);
-          }
-
-          document.getElementById("subs").innerText = actuel + "+";
-
-      }, 30);
-
-  })
-  .catch(() => {
-      document.getElementById("subs").innerText = "128+";
-  });
-</script>
-</script>
 </body>
 </html>
