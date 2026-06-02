@@ -402,7 +402,21 @@ animate();
 fetch("stats.json")
   .then(res => res.json())
   .then(data => {
-      document.getElementById("subs").innerText = data.abonnés + "+";
+
+      let cible = data.abonnés;
+      let compteur = 0;
+
+      const interval = setInterval(() => {
+          compteur++;
+
+          document.getElementById("subs").innerText = compteur + "+";
+
+          if(compteur >= cible){
+              clearInterval(interval);
+          }
+
+      }, 20);
+
   });
 </script>
 </body>
