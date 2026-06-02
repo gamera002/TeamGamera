@@ -426,18 +426,22 @@ fetch("stats.json")
   .then(data => {
 
       let cible = data.abonnés;
-      let compteur = 0;
+      let actuel = 0;
+
+      const speed = Math.max(10, Math.floor(cible / 50));
 
       const interval = setInterval(() => {
-          compteur++;
 
-          document.getElementById("subs").innerText = compteur + "+";
+          actuel += Math.ceil(cible / 80);
 
-          if(compteur >= cible){
+          if (actuel >= cible) {
+              actuel = cible;
               clearInterval(interval);
           }
 
-      }, 20);
+          document.getElementById("subs").innerText = actuel + "+";
+
+      }, 30);
 
   });
 </script>
