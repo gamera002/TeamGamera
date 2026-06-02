@@ -465,11 +465,10 @@ function animate(){
 animate();
 </script>
 <script>
+<script>
 fetch("stats.json")
   .then(res => res.json())
-  .then(data => {.catch(() => {
-    document.getElementById("subs").innerText = "128+";
-});
+  .then(data => {
 
       let cible = data.abonnés;
       let actuel = 0;
@@ -490,6 +489,8 @@ fetch("stats.json")
       }, 30);
 
   });
+</script>
+  
 </script>
 <script>
 fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
