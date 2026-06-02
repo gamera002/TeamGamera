@@ -445,11 +445,28 @@ fetch("stats.json")
 
   });
 </script>
-<script>
-fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
+fetch("stats.json")
   .then(res => res.json())
   .then(data => {
-      document.getElementById("visits").innerText = data.value;
+
+      let cible = data.abonnés;
+      let actuel = 0;
+
+      const speed = Math.max(10, Math.floor(cible / 50));
+
+      const interval = setInterval(() => {
+
+          actuel += Math.ceil(cible / 80);
+
+          if (actuel >= cible) {
+              actuel = cible;
+              clearInterval(interval);
+          }
+
+          document.getElementById("subs").innerText = actuel + "+";
+
+      }, 30);
+
   });
 </script>
 </body>
