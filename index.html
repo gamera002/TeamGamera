@@ -489,5 +489,21 @@ fetch("stats.json")
 
   });
 </script>
+<script>
+fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
+  .then(res => res.json())
+  .then(data => {
+
+      const value = data.value;
+      const el = document.getElementById("visits");
+
+      // met à jour le texte normal
+      el.innerText = value;
+
+      // IMPORTANT : met à jour le glitch
+      el.setAttribute("data-text", value);
+
+  });
+</script>
 </body>
 </html>
