@@ -464,12 +464,12 @@ function animate(){
 
 animate();
 
-</script>
+<script>
 fetch("stats.json")
   .then(res => res.json())
   .then(data => {
 
-      let cible = data.abonnes || 128;
+      const cible = data["abonnés"] || 128;
       let actuel = 0;
 
       const interval = setInterval(() => {
