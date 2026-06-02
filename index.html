@@ -467,7 +467,9 @@ animate();
 <script>
 fetch("stats.json")
   .then(res => res.json())
-  .then(data => {
+  .then(data => {.catch(() => {
+    document.getElementById("subs").innerText = "128+";
+});
 
       let cible = data.abonnés;
       let actuel = 0;
