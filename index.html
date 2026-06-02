@@ -497,12 +497,14 @@ fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
       const value = data.value;
       const el = document.getElementById("visits");
 
-      // met à jour le texte normal
       el.innerText = value;
-
-      // IMPORTANT : met à jour le glitch
       el.setAttribute("data-text", value);
 
+  })
+  .catch(() => {
+      const el = document.getElementById("visits");
+      el.innerText = "0";
+      el.setAttribute("data-text", "0");
   });
 </script>
 </body>
