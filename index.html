@@ -463,13 +463,15 @@ function animate(){
 }
 
 animate();
-</script>
 <script>
+/* =========================
+   COMPTEUR ABONNÉS (stats.json)
+   ========================= */
 fetch("stats.json")
   .then(res => res.json())
   .then(data => {
 
-      let cible = data.abonnes || 128;
+      const cible = data.abonnes || 128;
       let actuel = 0;
 
       const interval = setInterval(() => {
@@ -481,15 +483,45 @@ fetch("stats.json")
               clearInterval(interval);
           }
 
-          document.getElementById("subs").innerText = actuel + "+";
+          const el = document.getElementById("subs");
+          if (el) el.innerText = actuel + "+";
 
       }, 30);
 
   })
   .catch(() => {
-      document.getElementById("subs").innerText = "128+";
+      const el = document.getElementById("subs");
+      if (el) el.innerText = "128+";
+  });
+
+<script>
+/* =========================
+   COMPTEUR VISITES (CountAPI)
+   ========================= */
+fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
+  .then(res => res.json())
+  .then(data => {
+
+      const value = data.value;
+
+      const el = document.getElementById("visits");
+
+      if (el) {
+          el.innerText = value;
+          el.setAttribute("data-text", value);
+      }
+
+  })
+  .catch(() => {
+      const el = document.getElementById("visits");
+
+      if (el) {
+          el.innerText = "0";
+          el.setAttribute("data-text", "0");
+      }
   });
 </script>
+
 
 </body>
 </html>
