@@ -463,65 +463,31 @@ function animate(){
 }
 
 animate();
-<script>
-/* =========================
-   COMPTEUR ABONNÉS (stats.json)
-   ========================= */
-fetch("stats.json")
-  .then(res => res.json())
-  .then(data => {
 
-      const cible = data.abonnes || 128;
-      let actuel = 0;
+/* COMPTEUR GÉNÉRIQUE */
+function updateCounter(endpoint, elementId, defaultValue) {
+    fetch(endpoint)
+        .then(res => res.json())
+        .then(data => {
+            const value = data.value || defaultValue;
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.innerText = value;
+                el.setAttribute("data-text", value);
+            }
+        })
+        .catch(() => {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.innerText = defaultValue;
+                el.setAttribute("data-text", defaultValue.toString());
+            }
+        });
+}
 
-      const interval = setInterval(() => {
-
-          actuel += Math.ceil(cible / 80);
-
-          if (actuel >= cible) {
-              actuel = cible;
-              clearInterval(interval);
-          }
-
-          const el = document.getElementById("subs");
-          if (el) el.innerText = actuel + "+";
-
-      }, 30);
-
-  })
-  .catch(() => {
-      const el = document.getElementById("subs");
-      if (el) el.innerText = "128+";
-  });
-
-<script>
-/* =========================
-   COMPTEUR VISITES (CountAPI)
-   ========================= */
-fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
-  .then(res => res.json())
-  .then(data => {
-
-      const value = data.value;
-
-      const el = document.getElementById("visits");
-
-      if (el) {
-          el.innerText = value;
-          el.setAttribute("data-text", value);
-      }
-
-  })
-  .catch(() => {
-      const el = document.getElementById("visits");
-
-      if (el) {
-          el.innerText = "0";
-          el.setAttribute("data-text", "0");
-      }
-  });
+updateCounter("stats.json", "subs", "128+");
+updateCounter("https://api.countapi.xyz/hit/teamgamera2026/visites", "visits", 0);
 </script>
-
 
 </body>
 </html>
