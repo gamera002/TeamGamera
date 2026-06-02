@@ -6,8 +6,6 @@
 <title>TΞΔM GΛMΞRΔ | Brawl Stars</title>
 
 <style>
-/* ===== TON CSS ORIGINAL INCHANGÉ ===== */
-
 .faq-section{
     padding:70px 20px;
     text-align:center;
@@ -51,7 +49,6 @@
                 0 0 50px rgba(37,211,102,0.3);
 }
 
-/* RESET */
 *{
     margin:0;
     padding:0;
@@ -100,6 +97,7 @@ body > *{
     color:#25D366;
 }
 
+/* HERO */
 .hero{
     min-height:100vh;
     display:flex;
@@ -161,6 +159,30 @@ body > *{
     border-radius:15px;
 }
 
+.features{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.feature{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#0f172a;
+}
+
 /* VISITES */
 .glitch-number{
     position:relative;
@@ -178,6 +200,7 @@ body > *{
     <a href="#features">Infos</a>
     <a href="#questions">Questions</a>
     <a href="#faq">FAQ</a>
+    <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">WhatsApp</a>
 </nav>
 
 <section class="hero">
@@ -190,7 +213,9 @@ body > *{
 
 <img src="5CF7D331-C878-42FE-923E-328B185E7B5D.png" class="hero-image">
 
-<a class="btn" href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X">
+<a class="btn"
+href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X"
+target="_blank">
 📲 Rejoindre WhatsApp
 </a>
 
@@ -229,6 +254,26 @@ body > *{
 </div>
 </section>
 
+<section id="questions" class="features">
+
+<h1>❓ Questions des abonnés</h1>
+
+<div class="feature">
+<h2>📨 Poser une question</h2>
+<p>Envoie ta question via Google Forms.</p>
+
+<br>
+
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSft519tntUo2vEuFlQCYiUvURfjpR0nsy3B-blJVoEYHhJJKA/viewform?usp=sharing"
+target="_blank">
+❓ Ouvrir le formulaire
+</a>
+
+</div>
+
+</section>
+
 <section id="faq" class="faq-section">
 
 <h1>💬 Réponses de la communauté</h1>
@@ -259,14 +304,14 @@ body > *{
 </footer>
 
 <script>
-/* PARTICULES (inchangé mais propre) */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
+/* PARTICULES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let particles=[];
+let particles = [];
 
 for(let i=0;i<60;i++){
     particles.push({
@@ -283,8 +328,8 @@ function animate(){
     ctx.fillStyle="red";
 
     particles.forEach(p=>{
-        p.x+=p.dx;
-        p.y+=p.dy;
+        p.x += p.dx;
+        p.y += p.dy;
 
         if(p.x<0||p.x>canvas.width) p.dx*=-1;
         if(p.y<0||p.y>canvas.height) p.dy*=-1;
@@ -299,16 +344,16 @@ function animate(){
 
 animate();
 
-/* COMPTEUR VISITES (CORRIGÉ) */
+/* COMPTEUR VISITES */
 fetch("https://api.countapi.xyz/hit/teamgamera2026/visites")
-.then(res=>res.json())
-.then(data=>{
-    const el=document.getElementById("visits");
-    el.innerText=data.value;
-    el.setAttribute("data-text",data.value);
+.then(res => res.json())
+.then(data => {
+    const el = document.getElementById("visits");
+    el.innerText = data.value;
+    el.setAttribute("data-text", data.value);
 })
-.catch(()=>{
-    document.getElementById("visits").innerText="0";
+.catch(() => {
+    document.getElementById("visits").innerText = "0";
 });
 </script>
 
