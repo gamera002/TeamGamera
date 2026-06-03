@@ -486,11 +486,12 @@ fetch('https://api.countapi.xyz/hit/gamera002.github.io/visits')
   .then(res => res.json())
   .then(data => {
     const compteur = document.getElementById("visits");
-    compteur.innerText = data.value; // Mise à jour du compteur visible
-    compteur.dataset.text = data.value; // Mise à jour de l'effet glitch
+    const valeur = data.value.toString();
+    compteur.innerText = valeur;
+    compteur.setAttribute('data-text', valeur);
   })
   .catch(() => {
-    document.getElementById("visits").innerText = "Erreur"; // En cas de problème
+    document.getElementById("visits").innerText = "Erreur";
   });
 </script>
 <script>
