@@ -482,13 +482,12 @@ animateParticles();
 </script>
 <script>
 // Ajout d'un compteur avec CountAPI
-fetch('https://api.countapi.xyz/hit/gamera002.github.io/visits')
+fetch('https://api.allorigins.win/raw?url=https://api.countapi.xyz/hit/gamera002.github.io/visits')
   .then(res => res.json())
   .then(data => {
     const compteur = document.getElementById("visits");
-    const valeur = data.value.toString();
-    compteur.innerText = valeur;
-    compteur.setAttribute('data-text', valeur);
+    compteur.innerText = data.value;
+    compteur.dataset.text = data.value;
   })
   .catch(() => {
     document.getElementById("visits").innerText = "Erreur";
