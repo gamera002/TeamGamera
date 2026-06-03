@@ -102,6 +102,7 @@ body {
     color: white;
     scroll-behavior: smooth;
     overflow-x: hidden; /* FIX SCROLL */
+    padding-bottom: 80px;
 }
 
 /* 🌌 PARTICULES */
@@ -121,27 +122,32 @@ body > * {
     z-index: 1;
 }
 
-/* NAVBAR */
+/* NAVBAR BAS */
 .navbar {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    gap: 25px;
-    padding: 15px;
+    gap: 20px;
+    padding: 12px;
     background: #0f172a;
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.5rem;
+    transition: 0.3s;
 }
 
 .navbar a:hover {
     color: #25D366;
+    transform: scale(1.2);
 }
 
 /* HERO */
@@ -277,13 +283,13 @@ footer {
 <!-- 🌌 PARTICULES -->
 <canvas id="particles"></canvas>
 
-<!-- NAVBAR -->
+<!-- NAVBAR BAS -->
 <nav class="navbar">
-    <a href="#">Accueil</a>
-    <a href="#features">Infos</a>
-    <a href="#questions">Questions</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">WhatsApp</a>
+    <a href="#">🏠</a>
+    <a href="#features">ℹ️</a>
+    <a href="#questions">❓</a>
+    <a href="#faq">💬</a>
+    <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">📲</a>
 </nav>
 
 <!-- HERO -->
