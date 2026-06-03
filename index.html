@@ -3,55 +3,491 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TΞΔM GΛMΞRΔ | Compteur de visiteurs</title>
+<title>TΞΔM GΛMΞRΔ | Brawl Stars</title>
 
 <style>
-/* Style de base (non modifié) */
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
+.faq-section{
+    padding:70px 20px;
+    text-align:center;
+    background:radial-gradient(circle at top,#1e293b,#0f172a);
 }
-#visits {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #25D366;
+
+.faq-section h1{
+    font-size:2.2rem;
+    margin-bottom:30px;
+    color:#fff;
+    text-shadow:0 0 10px #25D366, 0 0 20px #25D366;
+    animation:glowTitle 2s infinite alternate;
+}
+
+@keyframes glowTitle{
+    from{ text-shadow:0 0 5px #25D366; }
+    to{ text-shadow:0 0 20px #25D366, 0 0 40px #25D366; }
+}
+
+.faq-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.faq-card{
+    background:linear-gradient(145deg,#1e293b,#0f172a);
+    border:2px solid rgba(37,211,102,0.5);
+    border-radius:18px;
+    padding:20px;
+    transition:0.3s ease;
+    box-shadow:0 0 15px rgba(37,211,102,0.15);
+    position:relative;
+    overflow:hidden;
+}
+
+.faq-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 0 25px rgba(37,211,102,0.6),
+                0 0 50px rgba(37,211,102,0.3);
+}
+
+.faq-card::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+        45deg,
+        transparent,
+        rgba(37,211,102,0.1),
+        transparent
+    );
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.faq-card h2{
+    color:#25D366;
+    margin-bottom:10px;
+    position:relative;
+}
+
+.faq-card p{
+    color:white;
+    opacity:0.9;
+    position:relative;
+}
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    scroll-behavior:smooth;
+
+    overflow-x:hidden; /* FIX SCROLL */
+}
+
+/* 🌌 PARTICULES */
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+
+    pointer-events:none; /* FIX CLICS */
+}
+
+/* contenu au-dessus */
+body > *{
+    position:relative;
+    z-index:1;
+}
+
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:15px;
+    background:#0f172a;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:#25D366;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+/* LOGO */
+.logo{
+    font-size:3rem;
+    font-weight:bold;
+    margin-bottom:20px;
+    animation:logoAnim 2.8s ease-in-out infinite;
+    text-shadow:0 0 10px #ff0000, 0 0 25px #ff4d4d;
+}
+
+@keyframes logoAnim{
+    0%{
+        transform:translateY(0) scale(1);
+        text-shadow:0 0 10px #ff0000;
+    }
+    50%{
+        transform:translateY(-6px) scale(1.08);
+        text-shadow:0 0 25px #ff0000, 0 0 40px #ff4d4d;
+    }
+    100%{
+        transform:translateY(0) scale(1);
+        text-shadow:0 0 10px #ff0000;
+    }
+}
+
+.subtitle{
+    font-size:1.2rem;
+    max-width:700px;
+    margin-bottom:30px;
+}
+
+.hero-image{
+    width:100%;
+    max-width:450px;
+    border-radius:25px;
+    margin-bottom:30px;
+    box-shadow:
+        0 0 20px rgba(255,0,80,.5),
+        0 0 40px rgba(255,60,60,.4),
+        0 0 60px rgba(255,100,0,.3);
+    transition:0.3s;
+}
+
+.hero-image:hover{
+    transform:scale(1.03);
+}
+
+.btn{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:15px 35px;
+    border-radius:12px;
+    font-size:1.2rem;
+}
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.card,
+.feature{
+    background:linear-gradient(145deg,#1e293b,#0f172a);
+    padding:20px;
+    border-radius:15px;
+    border:1px solid rgba(255,0,0,0.4);
+    box-shadow:0 0 15px rgba(255,0,0,0.2);
+    transition:0.3s;
+}
+
+.card:hover,
+.feature:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(255,0,0,0.5);
+}
+
+.features{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+#faq{
+    padding:60px 20px;
+    text-align:center;
+    background:#0f172a;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#0f172a;
+}
+/* 🔴 GLITCH COMPTEUR */
+.glitch-number {
+    position: relative;
+    color: #ff0000;
+    text-shadow: 0 0 5px red, 0 0 10px darkred;
+    animation: glitchFlicker 1.5s infinite;
+}
+
+.glitch-number::before,
+.glitch-number::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.glitch-number::before {
+    color: #ff3b3b;
+    transform: translateX(-2px);
+    animation: glitch1 0.3s infinite linear alternate-reverse;
+}
+
+.glitch-number::after {
+    color: #ff0000;
+    transform: translateX(2px);
+    animation: glitch2 0.3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch1 {
+    0% { transform: translate(-2px, 0); }
+    100% { transform: translate(2px, 0); }
+}
+
+@keyframes glitch2 {
+    0% { transform: translate(2px, 0); }
+    100% { transform: translate(-2px, 0); }
+}
+
+@keyframes glitchFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
 }
 </style>
 </head>
+
 <body>
 
-<h1>Bienvenue sur notre site ! 👋</h1>
-<p>Nombre de visiteurs :</p>
+<!-- 🌌 PARTICULES -->
+<canvas id="particles"></canvas>
 
-<!-- Affichage du nombre de visites -->
-<div id="visits">Chargement...</div>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="#">Accueil</a>
+    <a href="#features">Infos</a>
+    <a href="#questions">Questions</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank">WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="logo">𓆩 TΞΔM GΛMΞRΔ 𓆪</div>
+
+<p class="subtitle">
+🔥 Rejoins notre communauté Brawl Stars et participe aux jeux, défis et événements !
+</p>
+
+<img src="5CF7D331-C878-42FE-923E-328B185E7B5D.png" class="hero-image">
+
+<!-- FIX BOUTON -->
+<a class="btn"
+href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X"
+target="_blank"
+rel="noopener noreferrer">
+📲 Rejoindre WhatsApp
+</a>
+
+<div class="stats">
+    <div class="card">
+        <h2 id="subs">128+</h2>
+        <p>Abonnés</p>
+    </div>
+
+    <div class="card">
+        <h2>🎮</h2>
+        <p>Brawl Stars</p>
+    </div>
+
+    <div class="card">
+        <h2>7j/7</h2>
+        <p>Actif</p>
+    </div>
+
+    <div class="card">
+        <h2 id="visits" class="glitch-number" data-text="...">...</h2>
+        <p>Visites</p>
+    </div>
+</div>
+
+</section>
+
+<!-- INFOS -->
+<section class="features" id="features">
+
+<h1>Pourquoi rejoindre ?</h1>
+
+<div class="feature-grid">
+<div class="feature"><h2>🎮 Actualités</h2><p>Nouveautés Brawl Stars.</p></div>
+<div class="feature"><h2>🎉 Jeux</h2><p>Défis et events.</p></div>
+<div class="feature"><h2>🏅 Concours</h2><p>Récompenses.</p></div>
+<div class="feature"><h2>👥 Communauté</h2><p>Fans de Team Gamera.</p></div>
+</div>
+
+</section>
+
+<!-- QUESTIONS -->
+<section id="questions" class="features">
+
+<h1>❓ Questions des abonnés</h1>
+
+<div class="feature">
+<h2>📨 Poser une question</h2>
+<p>Envoie ta question via Google Forms.</p>
+
+<br>
+
+<a class="btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLSft519tntUo2vEuFlQCYiUvURfjpR0nsy3B-blJVoEYHhJJKA/viewform?usp=sharing"
+target="_blank">
+❓ Ouvrir le formulaire
+</a>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+
+<h1>💬 Réponses de la communauté</h1>
+
+<div class="faq-container">
+
+<div class="faq-card">
+<h2>❓ Comment rejoindre ?</h2>
+<p>Clique sur le bouton WhatsApp en haut du site.</p>
+</div>
+
+<div class="faq-card">
+<h2>❓ Comment poser une question ?</h2>
+<p>Utilise le formulaire dans la section Questions.</p>
+</div>
+
+<div class="faq-card">
+<h2>❓ À quoi sert ce site ?</h2>
+<p>À rejoindre la communauté et participer aux événements Brawl Stars.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 TΞΔM GΛMΞRΔ • Fan Site Brawl Stars
+</footer>
 
 <script>
-fetch("visits.json")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Erreur lors du chargement de visits.json");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    let visits = data.visits + 1; // Incrémenter le nombre de visites
+/* 🌌 PARTICULES ROUGES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
 
-    // Afficher les visites mises à jour
-    const el = document.getElementById("visits");
-    if (el) {
-      el.innerText = visits;
-    }
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<70;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2+1,
+        dx:(Math.random()-0.5)*0.6,
+        dy:(Math.random()-0.5)*0.6
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle="rgba(255,0,0,0.6)";
+
+    particles.forEach(p=>{
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if(p.x<0||p.x>canvas.width) p.dx*=-1;
+        if(p.y<0||p.y>canvas.height) p.dy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+<script>
+fetch("stats.json")
+  .then(res => res.json())
+  .then(data => {
+
+      let cible = data.abonnes || 128;
+      let actuel = 0;
+
+      const interval = setInterval(() => {
+
+          actuel += Math.ceil(cible / 80);
+
+          if (actuel >= cible) {
+              actuel = cible;
+              clearInterval(interval);
+          }
+
+          document.getElementById("subs").innerText = actuel + "+";
+
+      }, 30);
+
   })
-  .catch((error) => {
-    console.error("Erreur :", error);
-    const el = document.getElementById("visits");
-    if (el) {
-      el.innerText = "Erreur";
-    }
+  .catch(() => {
+      document.getElementById("subs").innerText = "128+";
   });
 </script>
 
