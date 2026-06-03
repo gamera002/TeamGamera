@@ -363,7 +363,7 @@ rel="noopener noreferrer">
     </div>
 
     <div class="card">
-        <h2 id="visits" class="glitch-number" data-text="...">...</h2>
+        <h2 id="visits" class="glitch-number" data-text="1">1</h2>
         <p>Visites</p>
     </div>
 </div>
@@ -481,17 +481,18 @@ createParticles();
 animateParticles();
 </script>
 <script>
-// Ajout d'un compteur avec CountAPI
-fetch('https://api.countapi.xyz/hit/gamera002.github.io/visits')
-  .then(res => res.json())
-  .then(data => {
-    const compteur = document.getElementById("visits");
-    compteur.innerText = data.value;
-    compteur.dataset.text = data.value;
-  })
-  .catch(() => {
-    document.getElementById("visits").innerText = "Erreur";
-  });
+// Compteur de visites avec localStorage
+let visits = localStorage.getItem('visits');
+if (!visits) {
+    visits = 1;
+} else {
+    visits = parseInt(visits) + 1;
+}
+localStorage.setItem('visits', visits);
+
+const compteur = document.getElementById("visits");
+compteur.innerText = visits;
+compteur.dataset.text = visits;
 </script>
 <script>
 fetch("stats.json")
