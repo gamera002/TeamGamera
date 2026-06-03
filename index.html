@@ -254,60 +254,19 @@ footer {
     padding: 30px;
     background: #0f172a;
 }
-/* 🔴 GLITCH COMPTEUR */
-.glitch-number {
-    position: relative;
+/* 🔴 COMPTEUR VISITEURS */
+.pulse-number {
     color: #ff0000;
     text-shadow: 0 0 5px red, 0 0 10px darkred;
-    animation: glitchFlicker 1.5s infinite;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
-.glitch-number::before,
-.glitch-number::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-}
-
-.glitch-number::before {
-    color: #ff3b3b;
-    transform: translateX(-2px);
-    animation: glitch1 0.3s infinite linear alternate-reverse;
-}
-
-.glitch-number::after {
-    color: #ff0000;
-    transform: translateX(2px);
-    animation: glitch2 0.3s infinite linear alternate-reverse;
-}
-
-@keyframes glitch1 {
-    0% {
-        transform: translate(-2px, 0);
-    }
-    100% {
-        transform: translate(2px, 0);
-    }
-}
-
-@keyframes glitch2 {
-    0% {
-        transform: translate(2px, 0);
-    }
-    100% {
-        transform: translate(-2px, 0);
-    }
-}
-
-@keyframes glitchFlicker {
+@keyframes pulse {
     0%, 100% {
-        opacity: 1;
+        transform: scale(1);
     }
     50% {
-        opacity: 0.85;
+        transform: scale(1.2);
     }
 }
 </style>
@@ -363,7 +322,7 @@ rel="noopener noreferrer">
     </div>
 
     <div class="card">
-        <h2 id="visits" class="glitch-number" data-text="1">1</h2>
+        <h2 id="visits" class="pulse-number">1</h2>
         <p>Visites</p>
     </div>
 </div>
@@ -492,7 +451,6 @@ localStorage.setItem('visits', visits);
 
 const compteur = document.getElementById("visits");
 compteur.innerText = visits;
-compteur.dataset.text = visits;
 </script>
 <script>
 fetch("stats.json")
