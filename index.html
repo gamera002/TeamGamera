@@ -481,6 +481,19 @@ createParticles();
 animateParticles();
 </script>
 <script>
+// Ajout d'un compteur avec CountAPI
+fetch('https://api.countapi.xyz/hit/gamera002.github.io/visits')
+  .then(res => res.json())
+  .then(data => {
+    const compteur = document.getElementById("visits");
+    compteur.innerText = data.value; // Mise à jour du compteur visible
+    compteur.dataset.text = data.value; // Mise à jour de l'effet glitch
+  })
+  .catch(() => {
+    document.getElementById("visits").innerText = "Erreur"; // En cas de problème
+  });
+</script>
+<script>
 fetch("stats.json")
   .then(res => res.json())
   .then(data => {
