@@ -453,30 +453,41 @@ const compteur = document.getElementById("visits");
 compteur.innerText = visits;
 </script>
 <script>
-fetch("stats.json")
-  .then(res => res.json())
-  .then(data => {
+// Compteur d'abonnés avec localStorage
+let savedSubs = localStorage.getItem('abonnes');
+if (!savedSubs) {
+    fetch("stats.json")
+      .then(res => res.json())
+      .then(data => {
+          let cible = data.abonnes || 128;
+          localStorage.setItem('abonnes', cible);
+          animateAbonnes(cible);
+      })
+      .catch(() => {
+          let defaultSubs = 128;
+          localStorage.setItem('abonnes', defaultSubs);
+          animateAbonnes(defaultSubs);
+      });
+} else {
+    animateAbonnes(parseInt(savedSubs));
+}
 
-      let cible = data.abonnes || 128;
-      let actuel = 0;
+function animateAbonnes(cible) {
+    let actuel = 0;
 
-      const interval = setInterval(() => {
+    const interval = setInterval(() => {
 
-          actuel += Math.ceil(cible / 80);
+        actuel += Math.ceil(cible / 80);
 
-          if (actuel >= cible) {
-              actuel = cible;
-              clearInterval(interval);
-          }
+        if (actuel >= cible) {
+            actuel = cible;
+            clearInterval(interval);
+        }
 
-          document.getElementById("subs").innerText = actuel + "+";
+        document.getElementById("subs").innerText = actuel + "+";
 
-      }, 30);
-
-  })
-  .catch(() => {
-      document.getElementById("subs").innerText = "128+";
-  });
+    }, 30);
+}
 </script>
 
 </body>
