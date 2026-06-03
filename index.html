@@ -21,12 +21,8 @@
 }
 
 @keyframes glowTitle {
-    from {
-        text-shadow: 0 0 5px #25D366;
-    }
-    to {
-        text-shadow: 0 0 20px #25D366, 0 0 40px #25D366;
-    }
+    from { text-shadow: 0 0 5px #25D366; }
+    to { text-shadow: 0 0 20px #25D366, 0 0 40px #25D366; }
 }
 
 .faq-container {
@@ -59,22 +55,13 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(37, 211, 102, 0.1),
-        transparent
-    );
+    background: linear-gradient(45deg, transparent, rgba(37, 211, 102, 0.1), transparent);
     animation: shine 4s linear infinite;
 }
 
 @keyframes shine {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .faq-card h2 {
@@ -89,7 +76,6 @@
     position: relative;
 }
 
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -101,10 +87,9 @@ body {
     background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
     scroll-behavior: smooth;
-    overflow-x: hidden; /* FIX SCROLL */
+    overflow-x: hidden;
 }
 
-/* 🌌 PARTICULES */
 #particles {
     position: fixed;
     top: 0;
@@ -112,16 +97,14 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
-    pointer-events: none; /* FIX CLICS */
+    pointer-events: none;
 }
 
-/* contenu au-dessus */
 body > * {
     position: relative;
     z-index: 1;
 }
 
-/* HAMBURGER MENU */
 .hamburger-btn {
     position: fixed;
     top: 20px;
@@ -156,19 +139,10 @@ body > * {
     transition: 0.3s;
 }
 
-.hamburger-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(15px);
-}
+.hamburger-btn.active span:nth-child(1) { transform: rotate(45deg) translateY(15px); }
+.hamburger-btn.active span:nth-child(2) { opacity: 0; }
+.hamburger-btn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-15px); }
 
-.hamburger-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-15px);
-}
-
-/* MENU DÉROULANT */
 .mobile-menu {
     position: fixed;
     top: 80px;
@@ -187,19 +161,11 @@ body > * {
 }
 
 @keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.mobile-menu.active {
-    display: flex;
-}
+.mobile-menu.active { display: flex; }
 
 .mobile-menu a {
     color: #ff0000;
@@ -222,7 +188,6 @@ body > * {
     transform: translateX(5px);
 }
 
-/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -233,7 +198,6 @@ body > * {
     padding: 20px;
 }
 
-/* LOGO */
 .logo {
     font-size: 3rem;
     font-weight: bold;
@@ -243,18 +207,9 @@ body > * {
 }
 
 @keyframes logoAnim {
-    0% {
-        transform: translateY(0) scale(1);
-        text-shadow: 0 0 10px #ff0000;
-    }
-    50% {
-        transform: translateY(-6px) scale(1.08);
-        text-shadow: 0 0 25px #ff0000, 0 0 40px #ff4d4d;
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        text-shadow: 0 0 10px #ff0000;
-    }
+    0% { transform: translateY(0) scale(1); text-shadow: 0 0 10px #ff0000; }
+    50% { transform: translateY(-6px) scale(1.08); text-shadow: 0 0 25px #ff0000, 0 0 40px #ff4d4d; }
+    100% { transform: translateY(0) scale(1); text-shadow: 0 0 10px #ff0000; }
 }
 
 .subtitle {
@@ -268,12 +223,10 @@ body > * {
     max-width: 450px;
     border-radius: 25px;
     margin-bottom: 30px;
-    box-shadow: 0 0 20px rgba(255, 0, 80, .5), 0 0 40px rgba(255, 60, 60, .4), 0 0 60px rgba(255, 100, 0, .3);
+    box-shadow: 0 0 20px rgba(255,0,80,.5), 0 0 40px rgba(255,60,60,.4), 0 0 60px rgba(255,100,0,.3);
     transition: 0.3s;
 }
-.hero-image:hover {
-    transform: scale(1.03);
-}
+.hero-image:hover { transform: scale(1.03); }
 
 .btn {
     display: inline-block;
@@ -293,8 +246,7 @@ body > * {
     flex-wrap: wrap;
 }
 
-.card,
-.feature {
+.card, .feature {
     background: linear-gradient(145deg, #1e293b, #0f172a);
     padding: 20px;
     border-radius: 15px;
@@ -303,8 +255,7 @@ body > * {
     transition: 0.3s;
 }
 
-.card:hover,
-.feature:hover {
+.card:hover, .feature:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
 }
@@ -332,7 +283,7 @@ footer {
     padding: 30px;
     background: #0f172a;
 }
-/* 🔴 COMPTEUR VISITEURS */
+
 .pulse-number {
     color: #ff0000;
     text-shadow: 0 0 5px red, 0 0 10px darkred;
@@ -340,29 +291,22 @@ footer {
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🌌 PARTICULES -->
 <canvas id="particles"></canvas>
 
-<!-- HAMBURGER BUTTON -->
 <button class="hamburger-btn" id="hamburger">
     <span></span>
     <span></span>
     <span></span>
 </button>
 
-<!-- MOBILE MENU -->
 <nav class="mobile-menu" id="mobileMenu">
     <a href="#"><span class="emoji">🏠</span> Accueil</a>
     <a href="#features"><span class="emoji">ℹ️</span> Infos</a>
@@ -371,7 +315,6 @@ footer {
     <a href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X" target="_blank"><span class="emoji">📲</span> WhatsApp</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 
 <div class="logo">𓆩 TΞΔM GΛMΞRΔ 𓆪</div>
@@ -382,7 +325,6 @@ footer {
 
 <img src="5CF7D331-C878-42FE-923E-328B185E7B5D.png" class="hero-image">
 
-<!-- FIX BOUTON -->
 <a class="btn"
 href="https://whatsapp.com/channel/0029Vb7AAAGAInPef0iwFQ2X"
 target="_blank"
@@ -395,84 +337,62 @@ rel="noopener noreferrer">
         <h2 id="subs">128+</h2>
         <p>Abonnés</p>
     </div>
-
     <div class="card">
         <h2>🎮</h2>
         <p>Brawl Stars</p>
     </div>
-
     <div class="card">
         <h2>7j/7</h2>
         <p>Actif</p>
     </div>
-
     <div class="card">
-        <h2 id="visits" class="pulse-number">1</h2>
+        <h2 id="visits" class="pulse-number">…</h2>
         <p>Visites</p>
     </div>
 </div>
 
 </section>
 
-<!-- INFOS -->
 <section class="features" id="features">
-
 <h1>Pourquoi rejoindre ?</h1>
-
 <div class="feature-grid">
 <div class="feature"><h2>🎮 Actualités</h2><p>Nouveautés Brawl Stars.</p></div>
 <div class="feature"><h2>🎉 Jeux</h2><p>Défis et events.</p></div>
 <div class="feature"><h2>🏅 Concours</h2><p>Récompenses.</p></div>
 <div class="feature"><h2>👥 Communauté</h2><p>Fans de Team Gamera.</p></div>
 </div>
-
 </section>
 
-<!-- QUESTIONS -->
 <section id="questions" class="features">
-
 <h1>❓ Questions des abonnés</h1>
-
 <div class="feature">
 <h2>📨 Poser une question</h2>
 <p>Envoie ta question via Google Forms.</p>
-
 <br>
-
 <a class="btn"
 href="https://docs.google.com/forms/d/e/1FAIpQLSft519tntUo2vEuFlQCYiUvURfjpR0nsy3B-blJVoEYHhJJKA/viewform?usp=sharing"
 target="_blank">
 ❓ Ouvrir le formulaire
 </a>
-
 </div>
-
 </section>
 
-<!-- FAQ -->
 <section id="faq" class="faq-section">
-
 <h1>💬 Réponses de la communauté</h1>
-
 <div class="faq-container">
-
 <div class="faq-card">
 <h2>❓ Comment rejoindre ?</h2>
 <p>Clique sur le bouton WhatsApp en haut du site.</p>
 </div>
-
 <div class="faq-card">
 <h2>❓ Comment poser une question ?</h2>
 <p>Utilise le formulaire dans la section Questions.</p>
 </div>
-
 <div class="faq-card">
 <h2>❓ À quoi sert ce site ?</h2>
 <p>À rejoindre la communauté et participer aux événements Brawl Stars.</p>
 </div>
-
 </div>
-
 </section>
 
 <footer>
@@ -480,15 +400,12 @@ target="_blank">
 </footer>
 
 <script>
-/* 🌌 PARTICULES ANIMATIONS */
+/* 🌌 PARTICULES */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let particles = [];
-
 function createParticles() {
     for (let i = 0; i < 70; i++) {
         particles.push({
@@ -500,27 +417,20 @@ function createParticles() {
         });
     }
 }
-
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.fillStyle = "rgba(255,0,0,0.6)";
-
     particles.forEach(p => {
         p.x += p.dx;
         p.y += p.dy;
-
         if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
     });
-
     requestAnimationFrame(animateParticles);
 }
-
 createParticles();
 animateParticles();
 </script>
@@ -529,13 +439,10 @@ animateParticles();
 /* HAMBURGER MENU */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('active');
 });
-
-// Fermer le menu quand on clique sur un lien
 const menuLinks = mobileMenu.querySelectorAll('a');
 menuLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -543,8 +450,6 @@ menuLinks.forEach(link => {
         mobileMenu.classList.remove('active');
     });
 });
-
-// Fermer le menu quand on clique ailleurs
 document.addEventListener('click', (e) => {
     if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
         hamburger.classList.remove('active');
@@ -554,36 +459,48 @@ document.addEventListener('click', (e) => {
 </script>
 
 <script>
-// Compteur de visites avec visits.json (fonctionne en mode incognito)
-fetch('visits.json')
-    .then(response => response.json())
-    .then(data => {
-        let visits = data.visits || 1;
-        visits++;
-        document.getElementById('visits').innerText = visits;
-        
-        // Envoyer le nouveau compteur au serveur
-        updateVisits(visits);
-    })
-    .catch(error => {
-        console.log('Erreur lecture visits.json:', error);
-        document.getElementById('visits').innerText = '1';
-    });
+/* 🔴 COMPTEUR DE VISITES - SUPABASE */
+const SUPABASE_URL = "https://aqkftlmrwstuzugqjuvz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_V8cTn9nDCegtzl0H420BxA_8_S6pGLQ";
 
-function updateVisits(newCount) {
-    fetch('update-visits.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ visits: newCount })
-    })
-    .catch(error => console.log('Erreur mise à jour visiteurs:', error));
+async function loadAndIncrementVisits() {
+    try {
+        const getRes = await fetch(`${SUPABASE_URL}/rest/v1/visits?id=eq.1&select=visit_count`, {
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + SUPABASE_KEY
+            }
+        });
+        const getData = await getRes.json();
+        const currentCount = getData[0]?.visit_count || 1;
+
+        document.getElementById('visits').innerText = currentCount;
+
+        const newCount = currentCount + 1;
+        await fetch(`${SUPABASE_URL}/rest/v1/visits?id=eq.1`, {
+            method: "PATCH",
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + SUPABASE_KEY,
+                "Content-Type": "application/json",
+                "Prefer": "return=minimal"
+            },
+            body: JSON.stringify({ visit_count: newCount })
+        });
+
+        document.getElementById('visits').innerText = newCount;
+
+    } catch (err) {
+        console.error("Erreur compteur Supabase:", err);
+        document.getElementById('visits').innerText = "?";
+    }
 }
+
+loadAndIncrementVisits();
 </script>
 
 <script>
-// Compteur d'abonnés avec localStorage
+/* COMPTEUR ABONNÉS */
 let savedSubs = localStorage.getItem('abonnes');
 if (!savedSubs) {
     fetch("stats.json")
@@ -594,9 +511,7 @@ if (!savedSubs) {
           animateAbonnes(cible);
       })
       .catch(() => {
-          let defaultSubs = 128;
-          localStorage.setItem('abonnes', defaultSubs);
-          animateAbonnes(defaultSubs);
+          animateAbonnes(128);
       });
 } else {
     animateAbonnes(parseInt(savedSubs));
@@ -604,18 +519,13 @@ if (!savedSubs) {
 
 function animateAbonnes(cible) {
     let actuel = 0;
-
     const interval = setInterval(() => {
-
         actuel += Math.ceil(cible / 80);
-
         if (actuel >= cible) {
             actuel = cible;
             clearInterval(interval);
         }
-
         document.getElementById("subs").innerText = actuel + "+";
-
     }, 30);
 }
 </script>
