@@ -102,7 +102,6 @@ body {
     color: white;
     scroll-behavior: smooth;
     overflow-x: hidden; /* FIX SCROLL */
-    padding-bottom: 80px;
 }
 
 /* 🌌 PARTICULES */
@@ -122,42 +121,105 @@ body > * {
     z-index: 1;
 }
 
-/* NAVBAR BAS */
-.navbar {
+/* HAMBURGER MENU */
+.hamburger-btn {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: #ff0000;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 8px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 30px;
-    padding: 12px;
-    background: #0f172a;
-    border-top: 1px solid rgba(255, 255, 255, .1);
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 
-.navbar a {
+.hamburger-btn:hover {
+    background: #ff3333;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(15px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-15px);
+}
+
+/* MENU DÉROULANT */
+.mobile-menu {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border: 2px solid rgba(255, 0, 0, 0.6);
+    border-radius: 12px;
+    padding: 15px;
+    z-index: 1000;
+    min-width: 200px;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
     color: #ff0000;
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-shadow: 0 0 5px #ff0000;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: 0.3s;
-    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+    gap: 10px;
 }
 
-.navbar a:hover {
+.mobile-menu a:hover {
+    background: rgba(255, 0, 0, 0.2);
     color: #ff6666;
-    transform: scale(1.15);
-    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff4d4d;
-}
-
-.navbar .emoji {
-    font-size: 1.5rem;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    transform: translateX(5px);
 }
 
 /* HERO */
@@ -293,8 +355,15 @@ footer {
 <!-- 🌌 PARTICULES -->
 <canvas id="particles"></canvas>
 
-<!-- NAVBAR BAS -->
-<nav class="navbar">
+<!-- HAMBURGER BUTTON -->
+<button class="hamburger-btn" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobileMenu">
     <a href="#"><span class="emoji">🏠</span> Accueil</a>
     <a href="#features"><span class="emoji">ℹ️</span> Infos</a>
     <a href="#questions"><span class="emoji">❓</span> Questions</a>
@@ -455,6 +524,35 @@ function animateParticles() {
 createParticles();
 animateParticles();
 </script>
+
+<script>
+/* HAMBURGER MENU */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+});
+
+// Fermer le menu quand on clique sur un lien
+const menuLinks = mobileMenu.querySelectorAll('a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    });
+});
+
+// Fermer le menu quand on clique ailleurs
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    }
+});
+</script>
+
 <script>
 // Compteur de visites avec localStorage
 let visits = localStorage.getItem('visits');
