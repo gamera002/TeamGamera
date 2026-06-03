@@ -554,48 +554,31 @@ document.addEventListener('click', (e) => {
 </script>
 
 <script>
-// Compteur de visites avec IndexedDB (fonctionne aussi en mode incognito)
-let db;
-const request = indexedDB.open('TeamGameraDB', 1);
-
-request.onerror = function() {
-    console.log('Erreur IndexedDB');
-    displayVisits(1);
-};
-
-request.onsuccess = function(event) {
-    db = event.target.result;
-    getAndUpdateVisits();
-};
-
-request.onupgradeneeded = function(event) {
-    db = event.target.result;
-    if (!db.objectStoreNames.contains('stats')) {
-        db.createObjectStore('stats', { keyPath: 'id' });
-    }
-};
-
-function getAndUpdateVisits() {
-    const transaction = db.transaction(['stats'], 'readonly');
-    const objectStore = transaction.objectStore('stats');
-    const getRequest = objectStore.get('visits');
-
-    getRequest.onsuccess = function(event) {
-        let visits = event.target.result ? event.target.result.count : 0;
+// Compteur de visites avec visits.json (fonctionne en mode incognito)
+fetch('visits.json')
+    .then(response => response.json())
+    .then(data => {
+        let visits = data.visits || 1;
         visits++;
-        displayVisits(visits);
-        saveVisits(visits);
-    };
-}
+        document.getElementById('visits').innerText = visits;
+        
+        // Envoyer le nouveau compteur au serveur
+        updateVisits(visits);
+    })
+    .catch(error => {
+        console.log('Erreur lecture visits.json:', error);
+        document.getElementById('visits').innerText = '1';
+    });
 
-function saveVisits(visits) {
-    const transaction = db.transaction(['stats'], 'readwrite');
-    const objectStore = transaction.objectStore('stats');
-    objectStore.put({ id: 'visits', count: visits });
-}
-
-function displayVisits(visits) {
-    document.getElementById('visits').innerText = visits;
+function updateVisits(newCount) {
+    fetch('update-visits.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ visits: newCount })
+    })
+    .catch(error => console.log('Erreur mise à jour visiteurs:', error));
 }
 </script>
 
