@@ -1,7 +1,7 @@
 // ⚙️ Configuration Supabase
 const SUPABASE_CONFIG = {
-    URL: 'https://aqkftlmrwstuzugqjuvz.supabase.co',
-    KEY: 'sb_publishable_V8cTn9nDCegtzl0H420BxA_8_S6pGLQ'
+    URL: 'https://mjdrrxxgivjgvhbtkhls.supabase.co',
+    KEY: 'sb_publishable_wIYBuyBCHziUCgyyB0pAhg_YOKxXylD'
 };
 
 // 🔐 Admin password (IMPORTANT: À sécuriser en production!)
